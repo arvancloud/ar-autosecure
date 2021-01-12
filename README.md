@@ -22,15 +22,14 @@ docker run \
 
 | Name                                 | Description                                               |  Type | Default
 |:-------------------------------------|:----------------------------------------------------------|:-----:|:--------:|
-| `PORT` | listening port  | number | 9097
 | `API_KEY` | your Arvan API-Key | string | -
 | `DOMAIN` | domain | string | -
 | `AUTO_DDOS_PROTECT` | enable auto ddos | bool | true
 | `AUTO_IP_BLOCK` | enable auto block | bool | true
-| `WHITE_LIST_IPS` | white list ips (used for auto block) | ''
-| `BLOCK_IP_THRESHOLD` | request count threshold | 1000
-| `HIGH_LOAD_THRESHOLD` | ddos thresholds | three number (map to off, cookie, javascript, recaptcha) | '80,85,90'
-| `CHECK_INTERVAL` | check interval (minute) | 60
+| `WHITE_LIST_IPS` | white list ips (used for auto block) | string or comma separate list | -
+| `BLOCK_IP_THRESHOLD` | request count threshold | number | 1000
+| `HIGH_LOAD_THRESHOLD` | ddos thresholds | string or comma separate list - three number (map to cookie, javascript and recaptcha thresholds) | 80,85,90
+| `CHECK_INTERVAL` | check interval (minute) | number | 60
 | `BASE_URL` | Arvan base URL | string | https://napi.arvancloud.com/cdn/4.0
 | `METRICS_PERIOD` | Arvan report period | enum(1h, 3h, 6h, 12h, 24h, 7d, 30d) | 3h
 
