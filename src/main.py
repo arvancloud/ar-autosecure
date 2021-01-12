@@ -1,5 +1,5 @@
 from src.config import API_KEY, DOMAIN, HIGH_LOAD_THRESHOLD, CHECK_INTERVAL,\
-    WHITE_LIST_IPS, BLOCK_IP_THRESHOLD, DDOS_LEVEL_MAPPING
+    WHITE_LIST_IPS, BLOCK_IP_THRESHOLD, DDOS_LEVEL_MAPPING, AUTO_IP_BLOCK, AUTO_DDOS_PROTECT
 from src.arvan_client import ArvanClient
 import threading
 import os
@@ -38,5 +38,7 @@ def check_high_requests_ips_and_block():
 
 
 if __name__ == '__main__':
-    threading.Thread(target=check_load_and_change_ddos_level).start()
-    threading.Thread(target=check_high_requests_ips_and_block).start()
+    if AUTO_IP_BLOCK:
+        threading.Thread(target=check_high_requests_ips_and_block).start()
+    if AUTO_DDOS_PROTECT:
+        threading.Thread(target=check_load_and_change_ddos_level).start()
