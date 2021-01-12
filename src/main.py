@@ -1,6 +1,6 @@
-from src.config import API_KEY, DOMAIN, HIGH_LOAD_THRESHOLD, CHECK_INTERVAL,\
+from .config import API_KEY, DOMAIN, HIGH_LOAD_THRESHOLD, CHECK_INTERVAL,\
     WHITE_LIST_IPS, BLOCK_IP_THRESHOLD, DDOS_LEVEL_MAPPING, AUTO_IP_BLOCK, AUTO_DDOS_PROTECT
-from src.arvan_client import ArvanClient
+from .arvan_client import ArvanClient
 import threading
 import os
 from time import sleep

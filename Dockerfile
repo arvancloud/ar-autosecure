@@ -9,4 +9,4 @@ WORKDIR /app
 COPY --from=BUILDER /app/venv /app/venv
 COPY . .
 ENV PATH="/app/venv/bin:$PATH"
-RUN ['python', 'src/main.py']
+CMD python -m src.main

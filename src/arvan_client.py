@@ -4,14 +4,17 @@ from .config import ARVAN_BASE_URL, DDOS_LEVEL_MAPPING, ARVAN_METRICS_PERIOD
 
 class ArvanClient:
     def __init__(self, api_key, domain):
-        self.headers = {'authorization': api_key}
+        self.headers = {
+            'authorization': api_key,
+            'content-type': 'application / json;charset = UTF - 8',
+            'accept': 'application/json, text/plain, */*',
+        }
         self.domain = domain
 
     def change_ddos_level(self, level, ttl=0):
-        requests.post(f'{ARVAN_BASE_URL}/domains/{self.domain}/ddos', data={
+        print(requests.patch(f'{ARVAN_BASE_URL}/domains/{self.domain}/ddos', json={
             'mode': level,
-            'ttl': ttl,
-        }, headers=self.headers)
+        }, headers=self.headers).json())
 
     def get_high_request_ips(self):
         return requests.get(
@@ -20,11 +23,12 @@ class ArvanClient:
         ).json()['data']
 
     def block_ip(self, ip):
-        requests.post(f'{ARVAN_BASE_URL}/domains/{self.domain}/firewall/rules', data={
-            'name': 'High request ip (Auto Block)',
+        print(requests.post(f'{ARVAN_BASE_URL}/domains/{self.domain}/firewall/rules', json={
+            'name': 'High request IP',
             'action': 'deny',
-            'is_enabled': 'true',
+            'is_enabled': True,
             'note': 'Auto Block',
             'sources': [ip],
             'url_pattern': '**',
-        }, headers=self.headers)
+        }, headers=self.headers).json())
+
