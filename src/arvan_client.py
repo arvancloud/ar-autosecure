@@ -26,9 +26,20 @@ class ArvanClient:
         print(requests.post(f'{ARVAN_BASE_URL}/domains/{self.domain}/firewall/rules', json={
             'name': 'High request IP',
             'action': 'deny',
-            'is_enabled': True,
-            'note': 'Auto Block',
             'sources': [ip],
-            'url_pattern': '**',
+            'is_enabled': True,
+            'note': 'Auto Blocked by Bot',
+            'url_pattern': '**'
         }, headers=self.headers).json())
 
+    def get_firewall_rules(self):
+        return requests.get(f'{ARVAN_BASE_URL}/domains/{self.domain}/firewall', headers=self.headers).json()['data']
+
+    def is_IP_blocked(self, ip):
+        is_blocked = False
+        for rule in self.get_firewall_rules()['rules']:
+            if rule['action'] == 'deny':
+                for source in rule['sources']:
+                    if source == ip:
+                        is_blocked = True
+        return is_blocked
