@@ -26,10 +26,10 @@ class ArvanClient:
         print(requests.post(f'{ARVAN_BASE_URL}/domains/{self.domain}/firewall/rules', json={
             'name': 'High request IP',
             'action': 'deny',
-            'sources': [ip],
             'is_enabled': True,
-            'note': 'Auto Blocked by Bot',
-            'url_pattern': '**'
+            'note': 'Auto Block',
+            'sources': [ip],
+            'url_pattern': '**',
         }, headers=self.headers).json())
 
     def get_firewall_rules(self):
