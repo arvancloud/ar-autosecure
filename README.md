@@ -41,7 +41,7 @@ docker run \
 | `HIGH_LOAD_THRESHOLD` | ddos thresholds | string or comma separate list - three number (map to cookie, javascript and recaptcha thresholds) | 5,10,50
 | `CHECK_INTERVAL` | check interval (seconds) | number | 60
 | `BASE_URL` | Arvan base URL | string | https://napi.arvancloud.com/cdn/4.0
-| `METRICS_PERIOD` | Arvan report period | enum(1h, 3h, 6h, 12h, 24h, 7d, 30d) | 3h
+| `ARVAN_METRICS_PERIOD` | Arvan report period | enum(1h, 3h, 6h, 12h, 24h, 7d, 30d) | 3h
 
 ### 👨🏻‍💻 Contributors:
 - SadeghHayeri [![https://github.com/sadeghhayeri](https://img.shields.io/github/followers/sadeghhayeri?color=red&label=Follow&logo=github&style=flat-square)](https://github.com/sadeghhayeri)
