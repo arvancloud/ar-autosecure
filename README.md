@@ -39,7 +39,7 @@ docker run \
 | `WHITE_LIST_IPS` | white list ips (used for auto block) | string or comma separate list | -
 | `BLOCK_IP_THRESHOLD` | request count threshold | number | 1000
 | `HIGH_LOAD_THRESHOLD` | ddos thresholds | string or comma separate list - three number (map to cookie, javascript and recaptcha thresholds) | 5,10,50
-| `CHECK_INTERVAL` | check interval (minute) | number | 60
+| `CHECK_INTERVAL` | check interval (seconds) | number | 60
 | `BASE_URL` | Arvan base URL | string | https://napi.arvancloud.com/cdn/4.0
 | `METRICS_PERIOD` | Arvan report period | enum(1h, 3h, 6h, 12h, 24h, 7d, 30d) | 3h
 
