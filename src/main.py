@@ -32,8 +32,9 @@ def check_high_requests_ips_and_block():
         for row in high_req_ips:
             print('CHECK IP', row['ip'])
             if row['request_count'] > BLOCK_IP_THRESHOLD and row['ip'] not in WHITE_LIST_IPS:
-                print(f'BLOCK IP {row["ip"]} WITH {row["request_count"]} requests')
-                arvan_client.block_ip(row['ip'])
+                if not arvan_client.is_IP_blocked(row['ip']):
+                    print(f'BLOCK IP {row["ip"]} WITH {row["request_count"]} requests')
+                    arvan_client.block_ip(row['ip'])
         sleep(CHECK_INTERVAL)
 
 
